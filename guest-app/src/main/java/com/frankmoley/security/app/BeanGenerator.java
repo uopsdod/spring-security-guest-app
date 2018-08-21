@@ -9,8 +9,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 public class BeanGenerator {
 	
 	@Bean
-	public ApplicationSecurityConfiguration applicationSecurityConfiguration() {
-		return new ApplicationSecurityConfiguration();
+	public MyWebSecurityConfigurerAdapter applicationSecurityConfiguration() {
+		return new MyWebSecurityConfigurerAdapter();
 	}
 	
 }
