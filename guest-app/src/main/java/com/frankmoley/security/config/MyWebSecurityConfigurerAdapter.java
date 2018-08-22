@@ -6,6 +6,7 @@ import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -29,7 +30,16 @@ public class MyWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter
 			.antMatchers("/","/index","/css/*","/js/*").permitAll()
 			.anyRequest().authenticated()
 			.and()
-			.httpBasic();
+			.formLogin()
+			.loginPage("/login_page").permitAll()
+            .loginProcessingUrl("/login").permitAll()
+            .defaultSuccessUrl("/index", true)
+            .and()
+			.logout().invalidateHttpSession(true)
+			.clearAuthentication(true)
+			.logoutRequestMatcher(new AntPathRequestMatcher("/logout_page"))
+			.logoutSuccessUrl("/logout-success").permitAll()
+			;
 	}
 	
 	@Override
