@@ -39,7 +39,7 @@ public class GuestController {
     	return "login";
     }
 
-    @GetMapping(value="/logout-success")
+    @GetMapping(value="/logout_success_page")
     public String getLogoutPage(Model model) {
     	return "logout";
     }
