@@ -18,6 +18,8 @@ public class MyWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter
 		super();
 		this.daoAuthenticationProvider = daoAuthenticationProvider;
 	}
+	
+	
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
