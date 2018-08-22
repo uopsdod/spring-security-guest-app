@@ -28,11 +28,14 @@ public class MyUserDetailsService implements UserDetailsService{
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		
+		/** Authentication **/
 		User user = this.userRepository.findByUsername(username);
 		if (null == user) {
 			throw new UsernameNotFoundException("cannot find username: " + username);
 		}
 		
+		/** Authorization **/
 		List<AuthGroup> authGroups = this.authGroupRepository.findByUsername(username);
 		
 		return new MyUserDetails(user, authGroups);

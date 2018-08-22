@@ -17,7 +17,7 @@ public class SecurityBeanConfiguration {
 		DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
 		provider.setUserDetailsService(myUserDetailsService);
 		provider.setPasswordEncoder(new BCryptPasswordEncoder(11));
-		provider.setAuthoritiesMapper(authoritiesMapper());
+		provider.setAuthoritiesMapper(authoritiesMapper()); // use the mew authoritiesMapper instance 
 		return provider;
 	}
 	
