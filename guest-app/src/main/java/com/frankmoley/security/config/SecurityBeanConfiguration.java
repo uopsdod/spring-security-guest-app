@@ -7,19 +7,9 @@ import org.springframework.security.core.authority.mapping.GrantedAuthoritiesMap
 import org.springframework.security.core.authority.mapping.SimpleAuthorityMapper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
-import com.frankmoley.security.app.auth.MyUserDetailsService;
 
 @Configuration
 public class SecurityBeanConfiguration {
-	
-	@Bean
-	public DaoAuthenticationProvider authenticationProvider(MyUserDetailsService myUserDetailsService) {
-		DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-		provider.setUserDetailsService(myUserDetailsService);
-		provider.setPasswordEncoder(new BCryptPasswordEncoder(11));
-		provider.setAuthoritiesMapper(authoritiesMapper()); // use the mew authoritiesMapper instance 
-		return provider;
-	}
 	
 	/**
 	 * this add the prefix "ROLE_" in front of every value got from UserDetails::getAuthorities
